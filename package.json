@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/iamfredrickokereke/Learn-Node/issues"
   },
-  "homepage": "https://github.com/iamfredrickokereke/Learn-Node#readme"
+  "homepage": "https://github.com/iamfredrickokereke/Learn-Node#readme",
+  "dependencies": {
+    "mongoose": "^5.9.24",
+    "underscore": "^1.10.2"
+  }
 }
