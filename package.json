@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/iamfredrickokereke/Learn-Node#readme",
   "dependencies": {
-    "mongoose": "^5.9.24",
-    "underscore": "^1.10.2"
+    "mongoose": "^5.9.24"
   }
 }
