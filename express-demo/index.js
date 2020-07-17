@@ -11,6 +11,12 @@ app.get('/api/courses', (request, response) => {
 })
 
 
+// get courses by ID
+
+app.get('/api/courses/:id', (request, response) => {
+    response.send(request.params)
+})
+
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {console.log(`Server is running on port ${port}`);
