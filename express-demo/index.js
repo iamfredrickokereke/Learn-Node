@@ -30,14 +30,7 @@ app.get('/api/courses', (request, response) => {
 app.post('/api/courses', (request, response) => {
 
     const {error} = validateCourse(request.body)
-
-    //check input validation
-
-    if (error) {
-        // Bad request
-        response.status(400).send(error.details[0].message)
-        return;
-    }
+    if (error) return response.status(400).send(error.details[0].message); 
 
     const course = {
         id: courses.length + 1,
