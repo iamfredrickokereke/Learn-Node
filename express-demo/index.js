@@ -25,6 +25,14 @@ app.get('/api/courses', (request, response) => {
 
 app.post('/api/courses', (request, response) => {
 
+    //check input validation
+
+    if (!request.body.name || request.body.name.length < 3) {
+        // Bad request
+        response.status(400).send('Name is required and character should be minimum 3 digits')
+        return;
+    }
+
     const course = {
         id: courses.length + 1,
         name: request.body.name
