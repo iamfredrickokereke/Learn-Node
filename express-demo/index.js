@@ -29,11 +29,7 @@ app.get('/api/courses', (request, response) => {
 
 app.post('/api/courses', (request, response) => {
 
-    const Schema = {
-        name : Joi.string().min(3).required()
-    };
-
-   const { error } = Joi.validate(request.body, Schema);
+    
    
 
 
@@ -75,7 +71,27 @@ app.get('/api/courses/:id', (request, response) => {
 
 app.put('/api/courses/:id', (request, response) => {
 
+    const course = courses.find( c => c.id === parseInt(request.params.id))
+
+    if(!course) {
+        response.status(404).send('The course with the given ID was not found.');
+    } {   
+    response.send(course);
+    }
+
+
+
 })
+
+
+function validateCourse(course) {
+    const Schema = {
+        name : Joi.string().min(3).required()
+    };
+
+   return Joi.validate(course, Schema);
+}
+
 
 const port = process.env.PORT || 4000;
 
