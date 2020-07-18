@@ -33,15 +33,18 @@ app.post('/api/courses', (request, response) => {
         name : Joi.string().min(3).required()
     };
 
-    Joi.validate(request.body, Schema)
+   const result= Joi.validate(request.body, Schema);
+
+   console.log(result);
+   
 
 
 
     //check input validation
 
-    if (!request.body.name || request.body.name.length < 3) {
+    if (result.error) {
         // Bad request
-        response.status(400).send('Name is required and character should be minimum 3 digits')
+        response.status(400).send(result.error.details[0].message)
         return;
     }
 
