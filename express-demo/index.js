@@ -29,10 +29,7 @@ app.get('/api/courses', (request, response) => {
 
 app.post('/api/courses', (request, response) => {
 
-    
-   
-
-
+    const {error} = validateCourse(request.body)
 
     //check input validation
 
@@ -76,8 +73,19 @@ app.put('/api/courses/:id', (request, response) => {
     if(!course) {
         response.status(404).send('The course with the given ID was not found.');
     } {   
+
+    const {error} = validateCourse(request.body)
+    if (error) {
+        // Bad request
+        response.status(400).send(error.details[0].message)
+        return;
+    }
+
+    course.name = request.body.name
     response.send(course);
     }
+
+    
 
 
 
@@ -88,7 +96,6 @@ function validateCourse(course) {
     const Schema = {
         name : Joi.string().min(3).required()
     };
-
    return Joi.validate(course, Schema);
 }
 
