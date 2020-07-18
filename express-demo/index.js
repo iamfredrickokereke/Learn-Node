@@ -1,4 +1,8 @@
+const Joi = require('joi');
+
 const express = require('express');
+
+
 
 const app = express();
 
@@ -24,6 +28,14 @@ app.get('/api/courses', (request, response) => {
 //creating a new course
 
 app.post('/api/courses', (request, response) => {
+
+    const Schema = {
+        name : Joi.string().min(3).required()
+    };
+
+    Joi.validate(request.body, Schema)
+
+
 
     //check input validation
 
