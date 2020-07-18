@@ -33,18 +33,16 @@ app.post('/api/courses', (request, response) => {
         name : Joi.string().min(3).required()
     };
 
-   const result= Joi.validate(request.body, Schema);
-
-   console.log(result);
+   const { error } = Joi.validate(request.body, Schema);
    
 
 
 
     //check input validation
 
-    if (result.error) {
+    if (error) {
         // Bad request
-        response.status(400).send(result.error.details[0].message)
+        response.status(400).send(error.details[0].message)
         return;
     }
 
@@ -71,6 +69,13 @@ app.get('/api/courses/:id', (request, response) => {
     }
 })
 
+
+
+// update course by ID
+
+app.put('/api/courses/:id', (request, response) => {
+
+})
 
 const port = process.env.PORT || 4000;
 
