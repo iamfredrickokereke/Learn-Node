@@ -14,7 +14,7 @@ app.get('/', (request, response) => {
 } )
 
 app.get('/api/courses', (request, response) => {
-   
+    //response.send([1, 2, 3]);
     response.send(courses)
 })
 
@@ -23,15 +23,11 @@ app.get('/api/courses', (request, response) => {
 
 app.get('/api/courses/:id', (request, response) => {
 
-    const course = courses.find( c => c.id === parseInt(request.params.id))
+    const courser = courses.find( function (course){ course.id === parseInt(request.params.id) } );
 
-    if(!course) {
-        response.status(404).send('The course with the given ID was not found.');
-    } {   
-    response.send(course);
-    }
+    if(!courser) response.status(404).send('The course with the given ID was not found.');
+    response.send(courser);
 })
-
 
 const port = process.env.PORT || 4000;
 
