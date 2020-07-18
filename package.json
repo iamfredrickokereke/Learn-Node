@@ -19,6 +19,7 @@
   "homepage": "https://github.com/iamfredrickokereke/Learn-Node#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "joi": "^13.1.0",
     "mongoose": "^5.9.24"
   }
 }
