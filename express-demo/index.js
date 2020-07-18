@@ -19,6 +19,20 @@ app.get('/api/courses', (request, response) => {
 })
 
 
+//creating a new course
+
+app.post('/api/courses', (request, response) => {
+
+    const course = {
+        id = courses.length + 1,
+        name = request.body.name
+    }
+
+    courses.push(course);
+    response.send(course)
+})
+
+
 // get courses by ID
 
 app.get('/api/courses/:id', (request, response) => {
