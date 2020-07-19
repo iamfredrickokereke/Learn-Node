@@ -21,7 +21,6 @@ app.get('/api/genres', (request, response) => {
 // Create a new genre
 
 app.post('/api/genres', (request, response) => {
-    //const genre = genres.find( g => g.id === parseInt(request.params.id));
 
     const newgenre = {
         "id" : genres.length + 1,
