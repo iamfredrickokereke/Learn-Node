@@ -12,7 +12,7 @@ POST http://localhost:3000/api/genres HTTP/1.1
 Content-Type: application/json
 
 {
-    "type": "Po"
+    "type": "Political"
 }
 
 
