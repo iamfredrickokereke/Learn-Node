@@ -51,15 +51,12 @@ app.post('/api/genres', (request, response) => {
           return response.status(400).send(error.details[0].message)
       }
    
-    const newgenre = {
+    const newGenre = {
         "id" : genres.length + 1,
         "type" : request.body.type
-    }
-
-   
-    genres.push(newgenre)
-
-    response.send(newgenre)
+    }   
+    genres.push(newGenre)
+    response.send(newGenre)
 })
 
 // update the genre list by ID
