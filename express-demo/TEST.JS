@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 
+app.use(logger)
 const courses = [
     { id: 1, name: 'course1'},
     { id: 2, name: 'course2'},
@@ -18,16 +19,6 @@ app.get('/api/courses', (request, response) => {
     response.send(courses)
 })
 
-
-// get courses by ID
-
-app.get('/api/courses/:id', (request, response) => {
-
-    const courser = courses.find( function (course){ course.id === parseInt(request.params.id) } );
-
-    if(!courser) response.status(404).send('The course with the given ID was not found.');
-    response.send(courser);
-})
 
 const port = process.env.PORT || 4000;
 

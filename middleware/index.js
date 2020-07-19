@@ -1,8 +1,9 @@
 const express = require('express');
+const middleware = require('./customMiddleware');
 
 const app = express();
 
-app.use(logger)
+app.use(middleware);
 const courses = [
     { id: 1, name: 'course1'},
     { id: 2, name: 'course2'},
