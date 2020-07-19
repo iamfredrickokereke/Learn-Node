@@ -18,6 +18,18 @@ app.get('/api/genres', (request, response) => {
     response.send(genres)
 })
 
+// retrieve a genre by ID
+
+app.get('/api/genres/:id', (request, response) => {
+    const genre = genres.find(g => g.id === parseInt(request.params.id))
+    if (!genre) {
+        return response.status(404).send('Your Genre ID was not found.')
+    }{
+        response.send(genre)
+    }
+})
+
+
 // Create a new genre
 
 app.post('/api/genres', (request, response) => {
@@ -32,7 +44,12 @@ app.post('/api/genres', (request, response) => {
     response.send(newgenre)
 })
 
-// app.put()
+// update the genre list by ID
+app.put('/api/genres/:id', (request, response) => {
+    // search if it exist
+    // return not found
+    // return 
+})
 
 // app.delete()
 
