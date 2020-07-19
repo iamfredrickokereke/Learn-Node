@@ -64,11 +64,26 @@ app.put('/api/genres/:id', (request, response) => {
     // return 
 
     genre.type = request.body.type
-
     return response.send(genre)
 })
 
-// app.delete()
+
+// Delete genre from the list
+
+app.delete('/api/genres/:id', (request, response) => {
+    const genre = genres.find( g => g.id === parseInt(request.params.id))
+
+    if (!genre) {
+        return   response.status(404).send('Given Course ID was not found')
+       }
+
+      const result = genres.indexOf(genre);
+
+      genres.splice(result, 1);
+
+      response.send(genre)
+    
+})
 
 const port = process.env.PORT || 3000;
 
