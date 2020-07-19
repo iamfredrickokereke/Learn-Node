@@ -69,6 +69,12 @@ app.put('/api/genres/:id', (request, response) => {
      return   response.status(404).send('Given Course ID was not found')
     }
     // return 
+    
+    const { error } = validateGenre(request.body);
+      
+      if (error) {
+          return response.status(400).send(error.details[0].message)
+      }
 
     genre.type = request.body.type
     return response.send(genre)
