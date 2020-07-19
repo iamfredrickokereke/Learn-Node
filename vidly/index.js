@@ -1,3 +1,6 @@
+
+const Joi = require('joi');
+
 const express = require('express');
 
 const app = express();
@@ -42,9 +45,19 @@ app.get('/api/genres/:id', (request, response) => {
 
 app.post('/api/genres', (request, response) => {
 
+    const schema = {
+        type : Joi.string().min(3).required()
+    }
+   
     const newgenre = {
         "id" : genres.length + 1,
         "type" : request.body.type
+    }
+
+    const result = Joi.validate(request.body, schema);
+
+    if (result.error) {
+            return response.status(400).send(result.error.details[0].message)
     }
     
     genres.push(newgenre)
@@ -84,6 +97,7 @@ app.delete('/api/genres/:id', (request, response) => {
       response.send(genre)
     
 })
+
 
 const port = process.env.PORT || 3000;
 
