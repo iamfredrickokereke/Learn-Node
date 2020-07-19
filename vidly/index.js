@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json())
 const genres = [
     {"id": 1, "type": "Animation"},
     {"id": 2, "type": "Action"},
@@ -12,11 +13,25 @@ const genres = [
 // default route
 app.get('/', (request, response) => { response.send('Welcome to Vidly Rental service!!!')})
 
+// Retrieve all genres
 app.get('/api/genres', (request, response) => {
     response.send(genres)
 })
 
-// app.post()
+// Create a new genre
+
+app.post('/api/genres', (request, response) => {
+    //const genre = genres.find( g => g.id === parseInt(request.params.id));
+
+    const newgenre = {
+        "id" : genres.length + 1,
+        "type" : request.body.type
+    }
+    
+    genres.push(newgenre)
+
+    response.send(newgenre)
+})
 
 // app.put()
 
