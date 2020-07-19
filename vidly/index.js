@@ -11,7 +11,15 @@ const genres = [
 ]
 
 // default route
-app.get('/', (request, response) => { response.send('Welcome to Vidly Rental service!!!')})
+app.get('/', (request, response) => { 
+
+    if (request.url == '/') {
+       return response.send('Welcome to Vidly Rental service!!!')
+    }else{
+        return response.send('oops not found')
+    }
+
+})
 
 // Retrieve all genres
 app.get('/api/genres', (request, response) => {
@@ -47,8 +55,17 @@ app.post('/api/genres', (request, response) => {
 // update the genre list by ID
 app.put('/api/genres/:id', (request, response) => {
     // search if it exist
+    const genre = genres.find(g => g.id === parseInt(request.params.id))
     // return not found
+
+    if (!genre) {
+     return   response.status(404).send('Given Course ID was not found')
+    }
     // return 
+
+    genre.type = request.body.type
+
+    return response.send(genre)
 })
 
 // app.delete()
