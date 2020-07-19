@@ -45,21 +45,18 @@ app.get('/api/genres/:id', (request, response) => {
 
 app.post('/api/genres', (request, response) => {
 
-    const schema = {
-        type : Joi.string().min(3).required()
-    }
+      const { error } = validateGenre(request.body);
+      
+      if (error) {
+          return response.status(400).send(error.details[0].message)
+      }
    
     const newgenre = {
         "id" : genres.length + 1,
         "type" : request.body.type
     }
 
-    const result = Joi.validate(request.body, schema);
-
-    if (result.error) {
-            return response.status(400).send(result.error.details[0].message)
-    }
-    
+   
     genres.push(newgenre)
 
     response.send(newgenre)
@@ -98,6 +95,14 @@ app.delete('/api/genres/:id', (request, response) => {
     
 })
 
+
+function validateGenre(genre) {
+    const schema = {
+        type : Joi.string().min(3).required()
+    }
+    return Joi.validate(genre, schema);
+
+}
 
 const port = process.env.PORT || 3000;
 
