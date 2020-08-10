@@ -5,6 +5,7 @@ const express = require('express');
 
 const app = express();
 
+
 app.use(express.json())
 const genres = [
     {"id": 1, "type": "Animation"},
@@ -14,6 +15,9 @@ const genres = [
 ]
 
 // default route
+
+
+app.use(express.static('public'))
 app.get('/', (request, response) => { 
 
     if (request.url == '/') {
