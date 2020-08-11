@@ -1,14 +1,19 @@
-
+const helmet = require('helmet');
+const morgan = require('morgan');
 const Joi = require('joi');
 
 const express = require('express');
 
 const app = express();
 
-
+// inbuilt middleware
 app.use(express.json());
 app.use(express.urlencoded({extended : true}));
 app.use(express.static('public'));
+
+// third party middleware
+app.use(helmet());
+app.use(morgan('tiny'));
 const genres = [
     {"id": 1, "type": "Animation"},
     {"id": 2, "type": "Action"},
