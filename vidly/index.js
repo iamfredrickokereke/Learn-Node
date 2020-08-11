@@ -7,9 +7,6 @@ const express = require('express');
 
 const app = express();
 
-// custom middleware
-
-app.use(Logger);
 
 // inbuilt middleware
 app.use(express.json());
@@ -18,8 +15,11 @@ app.use(express.static('public'));
 
 // third party middleware
 app.use(helmet());
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 
+// custom middleware
+
+app.use(Logger);
 
 const genres = [
     {"id": 1, "type": "Animation"},
@@ -27,6 +27,26 @@ const genres = [
     {"id": 3, "type": "Comedy"},
     {"id": 4, "type": "Crime"},
 ]
+
+
+// Environment
+
+// console.log(process.env.NODE_ENV);
+// console.log(`${app.get('env')}`);
+
+if (app.get('env') === 'development') {
+    console.log(`Node Environment: ${app.get('env')}`);    
+    app.use(morgan('tiny'));
+    console.log('Morgan Enabled...');
+    
+}
+
+
+
+
+
+
+
 
 // default route
 
