@@ -1,4 +1,5 @@
 const helmet = require('helmet');
+const Logger = require('./Logger');
 const morgan = require('morgan');
 const Joi = require('joi');
 
@@ -8,10 +9,7 @@ const app = express();
 
 // custom middleware
 
-app.use( function (req, res, next) {
-    console.log('Logging...');
-    
-});
+app.use(Logger);
 
 // inbuilt middleware
 app.use(express.json());
