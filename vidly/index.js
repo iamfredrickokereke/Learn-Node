@@ -10,6 +10,11 @@ const express = require('express');
 
 const app = express();
 
+// using template engine
+
+app.set('view engine', 'pug');
+app.set('views', './views');
+
 
 // test debugger
 startDebugger('it passed successfully');
