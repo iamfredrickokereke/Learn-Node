@@ -3,10 +3,17 @@ const Logger = require('./Logger');
 const morgan = require('morgan');
 const Joi = require('joi');
 const config = require('config');
+const startDebugger = require('debug')('app:startup');
+const dbDebugger =  require('debug')('app:db');
 
 const express = require('express');
 
 const app = express();
+
+
+// test debugger
+startDebugger('it passed successfully');
+dbDebugger('Db connected successfully');
 
 
 // inbuilt middleware
