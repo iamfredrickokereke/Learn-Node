@@ -2,6 +2,7 @@ const helmet = require('helmet');
 const Logger = require('./Logger');
 const morgan = require('morgan');
 const Joi = require('joi');
+const config = require('config');
 
 const express = require('express');
 
@@ -34,12 +35,24 @@ const genres = [
 // console.log(process.env.NODE_ENV);
 // console.log(`${app.get('env')}`);
 
-if (app.get('env') === 'development') {
+if (app.get('env') === 'developmentiu') {
     console.log(`Node Environment: ${app.get('env')}`);    
     app.use(morgan('tiny'));
-    console.log('Morgan Enabled...');
+    console.log('Morgan Enabled...');    
+    console.log(`Application name: ${config.get('name')}`);
+    console.log(`Version : ${config.get('version')}`);    
+    console.log(`Mail password: ${config.get('mail.password')}`);
     
-}
+ }else{
+   console.log(`Node Environment: ${process.env.NODE_ENV}.....`);
+    console.log(`Version : ${config.get('version')}`);
+    console.log(`Application name: ${config.get('name')}`);
+    // console.log(`Mail Password: ${config.get('mail.password')}`);
+
+    console.log('Mail password : ' + config.get('mail.password'));
+    
+    
+ }
 
 
 

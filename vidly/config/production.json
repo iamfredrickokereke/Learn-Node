@@ -1,0 +1,6 @@
+{
+    "name":"Video Streaming App",
+    "mail": {
+        "host": "Production-mail server"
+    }
+}
