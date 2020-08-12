@@ -1,5 +1,5 @@
 const helmet = require('helmet');
-const Logger = require('./Logger');
+const Logger = require('./middlewares/Logger');
 const morgan = require('morgan');
 const Joi = require('joi');
 const config = require('config');
