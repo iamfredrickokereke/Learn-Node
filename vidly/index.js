@@ -80,7 +80,9 @@ if (app.get('env') === 'developmentiu') {
 app.get('/', (request, response) => { 
 
     if (request.url == '/') {
-       return response.send('Welcome to Vidly Rental service!!!')
+      // return response.send('Welcome to Vidly Rental service!!!')
+
+      return response.render('index', { title: 'Simple Express App', message: 'This is my first pug rendering'})
     }else{
         return response.send('oops not found')
     }
