@@ -1,7 +1,7 @@
 const helmet = require('helmet');
 const Logger = require('./middlewares/Logger');
 const morgan = require('morgan');
-const Joi = require('joi');
+// const Joi = require('joi');
 const config = require('config');
 const startDebugger = require('debug')('app:startup');
 const dbDebugger =  require('debug')('app:db');
