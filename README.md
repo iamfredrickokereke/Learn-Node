@@ -1,2 +1,1 @@
-# Learn-Node
-Resource for node
+#Resource for node
