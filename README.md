@@ -1,1 +1,1 @@
-#Resource for node/
+# Resource for node
